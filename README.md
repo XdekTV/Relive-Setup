@@ -1,6 +1,10 @@
-# Classic Setup
-Classic Setup is a post-install utility for Classic 7.
+# Relive Setup
+Relive Setup to narzędzie stworzone przez n1d3v, pierwotnie dla modyfikacji Classic7. To jest zmodyfikowana wersja, która została przetłumaczona na język pl-PL.
 
-It allows you to change your branding and your Firefox style.
+Program pozwala zmienić oznakowanie i styl Firefoxa w modyfikacjiach:
+- Relive7
+- ReliveVista (wkrótce)
+- ReliveXP (wkrótce)
 
-![setup](https://github.com/user-attachments/assets/4c372c73-525a-49e8-9717-8fc4b94e6a92)
+![obraz](https://github.com/user-attachments/assets/e681b411-877f-421c-89d2-5c24d522b12a)
+
