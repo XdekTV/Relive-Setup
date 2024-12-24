@@ -73,15 +73,18 @@
             // 
             // welcomeWizard
             // 
+            this.welcomeWizard.BackButtonToolTipText = "Wróć na poprzednią stronę";
+            this.welcomeWizard.CancelButtonText = "&Anuluj";
             this.welcomeWizard.Location = new System.Drawing.Point(0, 0);
             this.welcomeWizard.Name = "welcomeWizard";
+            this.welcomeWizard.NextButtonText = "&Dalej";
             this.welcomeWizard.Pages.Add(this.wizardPage2);
             this.welcomeWizard.Pages.Add(this.wizardPage3);
             this.welcomeWizard.Pages.Add(this.wizardPage6);
             this.welcomeWizard.Pages.Add(this.wizardPage5);
             this.welcomeWizard.Size = new System.Drawing.Size(584, 462);
             this.welcomeWizard.TabIndex = 1;
-            this.welcomeWizard.Title = "Welcome to Classic 7";
+            this.welcomeWizard.Title = "Witamy w Relive7";
             this.welcomeWizard.TitleIcon = ((System.Drawing.Icon)(resources.GetObject("welcomeWizard.TitleIcon")));
             // 
             // wizardPage2
@@ -90,16 +93,17 @@
             this.wizardPage2.Name = "wizardPage2";
             this.wizardPage2.Size = new System.Drawing.Size(537, 308);
             this.wizardPage2.TabIndex = 0;
-            this.wizardPage2.Text = "Welcome!";
+            this.wizardPage2.Text = "Witamy!";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(500, 105);
+            this.label1.Size = new System.Drawing.Size(512, 120);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // wizardPage3
             // 
@@ -109,7 +113,7 @@
             this.wizardPage3.ShowNext = false;
             this.wizardPage3.Size = new System.Drawing.Size(537, 308);
             this.wizardPage3.TabIndex = 1;
-            this.wizardPage3.Text = "Choose your branding";
+            this.wizardPage3.Text = "Oznakowanie systemu";
             // 
             // cmdlinkpanel
             // 
@@ -123,9 +127,10 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(239, 15);
+            this.label2.Size = new System.Drawing.Size(240, 15);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Choose your branding type for your edition.\r\n";
+            this.label2.Text = "Wybierz preferowane oznakowanie systemu.";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // wizardPage6
             // 
@@ -135,7 +140,7 @@
             this.wizardPage6.ShowNext = false;
             this.wizardPage6.Size = new System.Drawing.Size(537, 308);
             this.wizardPage6.TabIndex = 4;
-            this.wizardPage6.Text = "Choose your browser style";
+            this.wizardPage6.Text = "Styl przeglądarki";
             // 
             // bwsrlinkpanel
             // 
@@ -149,9 +154,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(1, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(228, 15);
+            this.label5.Size = new System.Drawing.Size(245, 15);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Choose your preferred style of Firefox skin\r\n";
+            this.label5.Text = "Wybierz preferowany styl przeglądarki Firefox";
             // 
             // wizardPage5
             // 
@@ -163,7 +168,7 @@
             this.wizardPage5.ShowNext = false;
             this.wizardPage5.Size = new System.Drawing.Size(537, 308);
             this.wizardPage5.TabIndex = 3;
-            this.wizardPage5.Text = "Thank you!";
+            this.wizardPage5.Text = "Dziękujemy!";
             // 
             // rebootpanel
             // 
@@ -177,10 +182,10 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(327, 45);
+            this.label4.Size = new System.Drawing.Size(350, 45);
             this.label4.TabIndex = 0;
-            this.label4.Text = "That\'s all the information we need right now.\r\n\r\nClassic 7 will reboot for you to" +
-    " apply some finishing touches.";
+            this.label4.Text = "To wszystkie informacje jakie potrzebujemy na tą chwile.\r\n\r\nKomputer uruchomi się" +
+    " ponownie, aby dokończyć ostatnie szlify.";
             // 
             // Wizard
             // 
@@ -189,6 +194,8 @@
             this.ClientSize = new System.Drawing.Size(584, 462);
             this.Controls.Add(this.welcomeWizard);
             this.Controls.Add(this.wizardPageContainer1);
+            this.HelpButton = true;
+            this.MaximizeBox = false;
             this.Name = "Wizard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "hai!!!";

@@ -11,7 +11,7 @@ namespace ClassicSetup
 {
     public partial class Wizard : Form
     {
-        private readonly string logFilePath = @"C:\Classic Files\firsttime.log";
+        private readonly string logFilePath = @"C:\Programy\firsttime.log";
         private bool hasSimulatedWinR = false;
 
         public Wizard()
@@ -22,18 +22,17 @@ namespace ClassicSetup
 
         private void AddCommandLinkButtons()
         {
-            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Ultimate branding", BrandingButton_Click);
-            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Professional branding", BrandingButton_Click);
-            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Home Premium branding", BrandingButton_Click);
-            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Home Basic branding", BrandingButton_Click);
-            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Starter branding", BrandingButton_Click);
+            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Ultimate", BrandingButton_Click);
+            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Professional", BrandingButton_Click);
+            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Home Premium", BrandingButton_Click);
+            AddCommandLinkButton(cmdlinkpanel, "Windows 7 Enterprise", BrandingButton_Click);
 
-            AddCommandLinkButton(bwsrlinkpanel, "Internet Explorer 11 style (BeautyFox)", BrowserButton_Click);
-            AddCommandLinkButton(bwsrlinkpanel, "Firefox 14 - 28 style (Echelon)", BrowserButton_Click);
-            AddCommandLinkButton(bwsrlinkpanel, "Chrome 23 style (Silverfox)", BrowserButton_Click);
-            AddCommandLinkButton(bwsrlinkpanel, "Firefox 115 (Unmodified)", BrowserButton_Click);
+            AddCommandLinkButton(bwsrlinkpanel, "Styl Internet Explorer 9 (BeautyFox)", BrowserButton_Click);
+            AddCommandLinkButton(bwsrlinkpanel, "Styl Firefox 14-28 (Echelon)", BrowserButton_Click);
+            AddCommandLinkButton(bwsrlinkpanel, "Styl Chrome 25 (Geckium)", BrowserButton_Click);
+            AddCommandLinkButton(bwsrlinkpanel, "Firefox 115", BrowserButton_Click);
 
-            AddCommandLinkButton(rebootpanel, "Reboot now and finish the post-install stage", RebootButton_Click);
+            AddCommandLinkButton(rebootpanel, "Uruchom ponownie aby dokończyć ostatnie szlify", RebootButton_Click);
             Log("Added buttons");
         }
 
@@ -53,20 +52,17 @@ namespace ClassicSetup
             var button = (CommandLinkButton)sender;
             switch (button.Text)
             {
-                case "Windows 7 Ultimate branding":
+                case "Windows 7 Ultimate":
                     ApplyBranding("Ultimate");
                     break;
-                case "Windows 7 Professional branding":
+                case "Windows 7 Professional":
                     ApplyBranding("Professional");
                     break;
-                case "Windows 7 Home Premium branding":
+                case "Windows 7 Home Premium":
                     ApplyBranding("Premium");
                     break;
-                case "Windows 7 Home Basic branding":
-                    ApplyBranding("Basic");
-                    break;
-                case "Windows 7 Starter branding":
-                    ApplyBranding("Starter");
+                case "Windows 7 Enterprise":
+                    ApplyBranding("Enterprise");
                     break;
             }
             welcomeWizard.NextPage();
@@ -87,10 +83,6 @@ namespace ClassicSetup
 
                 Log($"Executed branding.exe for {edition}");
 
-                if (edition == "Starter")
-                {
-                    ApplyStarterWallpaper();
-                }
             }
             catch (UnauthorizedAccessException uex)
             {
@@ -108,7 +100,7 @@ namespace ClassicSetup
         {
             try
             {
-                string executablePath = @"C:\Classic Files\Classic Setup\branding.exe";
+                string executablePath = @"C:\Programy\PostInstall\branding.exe";
                 string arguments = $"-branding \"{edition}\"";
 
                 var process = new System.Diagnostics.Process();
@@ -164,17 +156,6 @@ namespace ClassicSetup
             }
         }
 
-        private void ApplyStarterWallpaper()
-        {
-            string wallpaperPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Branding", "Starter", "wallpaper.jpg");
-
-            if (File.Exists(wallpaperPath))
-            {
-                SetWallpaper(wallpaperPath);
-                Log("Applied Starter Wallpaper");
-            }
-        }
-
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
         const int SPI_SETDESKWALLPAPER = 0x0014;
@@ -191,16 +172,16 @@ namespace ClassicSetup
             var button = (CommandLinkButton)sender;
             switch (button.Text)
             {
-                case "Internet Explorer 11 style (BeautyFox)":
-                    ApplyIE11Style();
+                case "Styl Internet Explorer 9 (BeautyFox)":
+                    ApplyIE9Style();
                     break;
-                case "Firefox 14 - 28 style (Echelon)":
-                    ApplyFirefox10To13Style();
+                case "Styl Firefox 14-28 (Echelon)":
+                    ApplyFirefox14To28Style();
                     break;
-                case "Chrome 23 style (Silverfox)":
+                case "Styl Chrome 25 (Geckium)":
                     ApplyChrome2012Style();
                     break;
-                case "Firefox 115 (Unmodified)":
+                case "Firefox 115":
                     ApplyFirefox115Style();
                     break;
             }
@@ -209,13 +190,13 @@ namespace ClassicSetup
             welcomeWizard.NextPage();
         }
 
-        private void ApplyIE11Style()
+        private void ApplyIE9Style()
         {
             ApplyBrowserStyle("BeautyFox");
             Log("Applied Internet Explorer 11 Style");
         }
 
-        private void ApplyFirefox10To13Style()
+        private void ApplyFirefox14To28Style()
         {
             ApplyBrowserStyle("Echelon");
             Log("Applied Firefox 14 - 28 Style");
@@ -223,7 +204,7 @@ namespace ClassicSetup
 
         private void ApplyChrome2012Style()
         {
-            ApplyBrowserStyle("Silverfox");
+            ApplyBrowserStyle("Geckium");
             Log("Applied Chrome 23 Style");
         }
 
@@ -336,7 +317,7 @@ namespace ClassicSetup
                         key.SetValue("EnableLUA", 1, RegistryValueKind.DWord);
                     }
                 }
-                Process.Start("shutdown", "/r /t 0");
+                Process.Start("shutdown", "/r /f /t 0");
             }
             catch
             {
@@ -357,6 +338,16 @@ namespace ClassicSetup
             {
                 MessageBox.Show($"Failed to write log: {ex.Message}");
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

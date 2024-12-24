@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsFormsApp1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Konfigurator Relive7")]
+[assembly: AssemblyDescription("Aplikacja która dokończy instalację modyfikacji Relive7.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WindowsFormsApp1")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyCompany("The Relive Team")]
+[assembly: AssemblyProduct("Konfigurator Relive7")]
+[assembly: AssemblyCopyright("Copyright © 2024 - The Relive Team")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
